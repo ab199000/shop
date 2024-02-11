@@ -1,4 +1,4 @@
-const sequelize = require('../db')
+const {sequelize} = require('../db')
 const {DataTypes} = require('sequelize')
 
 const User = sequelize.define('user',{
@@ -66,8 +66,9 @@ Rating.belongsTo(Device)
 Device.hasMany(BasketDevice) 
 BasketDevice.belongsTo(Device)
 
-Device.hasMany(DeviceInfo) 
+Device.hasMany(DeviceInfo, {as:'info'}) 
 DeviceInfo.belongsTo(Device)
+
 
 module.exports = {
     User,
